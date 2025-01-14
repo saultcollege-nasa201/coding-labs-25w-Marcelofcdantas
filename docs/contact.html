@@ -14,24 +14,26 @@
     </div>
 </nav>    
 <body>
-    <form action="POST" class="row g-3">
-        <div class="mb-4 mt-4 col-md-12">
-            <label class="form-label"> Name
+    <form action="POST" class="row g-3 mx-3 mt-4">
+        <div class="my-4 col-md-6 form-floating">
+            <input class="form-control" type="text" placeholder="John Jones" id="name" required/>
+            <label class="form-label" for="name"> Name
             </label>
-            <input class="form-control-sm" type="text" placeholder="John Jones"/>
         </div>
-        <div class="mb-4 col-md-12">
-            <label class="form-label"> Email
-            </label>
-            <input class="form-control-sm" type="email" placeholder="myemail@email.com"/>
+        <div>
+            <div class="mb-4 col-md-6 form-floating">
+                <input class="form-control" type="email" id="email " required/>
+                <label class="form-label" for="email"> Email
+                </label>
+            </div>
         </div>
-        <div class="mb-4 col-md-12">
-            <label class="form-label"> Message
-            </label>
-            <textarea class="form-control-sm" type="textarea" placeholder="your message for us">
+        <div class="mb-4 col-md-6 form-floating">
+            <textarea class="form-control" type="textarea" id="message" required>
             </textarea>
+            <label class="form-label" for="message"> Message
+            </label>
         </div>
-        <div class="mb-4 col-12">
+        <div class="mb-4 col-12 form-floating">
             <button class="btn btn-primary" type="submit">
                 Submit
             </button>
