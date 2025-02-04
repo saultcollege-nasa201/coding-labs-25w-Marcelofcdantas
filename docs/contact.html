@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="./script.js"></script>
     <title>Nasa201 Assignment - Contact us</title>
 </head>
 <header>
@@ -28,13 +29,13 @@
 <body>
     <form action="https://www.nasa201.com"  method="POST" class="row g-3 mx-3 mt-4">
         <div class="my-4 col-md-6 form-floating">
-            <input class="form-control" type="text" id="name" required/>
+            <input class="form-control" type="text" id="customerName" required/>
             <label class="form-label" for="name"> Name
             </label>
         </div>
         <div>
             <div class="mb-4 col-md-6 form-floating">
-                <input class="form-control" type="email" id="email " required/>
+                <input class="form-control" type="email" id="email" required/>
                 <label class="form-label" for="email"> Email
                 </label>
             </div>
@@ -46,7 +47,7 @@
             </label>
         </div>
         <div class="mb-4 col-12 form-floating">
-            <button class="btn btn-primary" type="submit">
+            <button class="btn btn-danger" disabled type="submit" id="button">
                 Submit
             </button>
         </div>
