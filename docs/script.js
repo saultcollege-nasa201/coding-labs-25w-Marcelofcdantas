@@ -1,46 +1,56 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
     let customername = document.getElementById('customerName');
     let email = document.getElementById('email');
     let message = document.getElementById('message');
     var button = document.getElementById('button');
-    let fieldsFilled = false;
-    button.addEventListener('mouseover', () => {checkFields(fieldsFilled)});
-    customername.addEventListener('change', validateForm);
-    email.addEventListener('change', validateForm);
-    message.addEventListener('change', validateForm);
+    var emailValid;
+    customername.addEventListener('input', validateForm);
+    email.addEventListener('change', () => { emailValidation(email.value); validateForm();});
+    message.addEventListener('input', validateForm);
 
     function validateForm() {
-        let validEmail = emailValidation(email);
-        if (!validEmail) {
-            alert("This isn't a valid email");
-            return;
-        };
-        if (customername.value == '' || email.value == '' || message.value.trim() == '') {
+
+        toggleErrorClass(customername);
+        toggleErrorClass(message);
+
+        if (!emailValid && email.value != '') {
             button.className = 'btn btn-danger';
             button.setAttribute('disabled', true);
-            fieldsFilled = false;
+            return;
+        }
+
+        if (customername.value.trim() === '' || email.value.trim() === '' || message.value.trim() === '') {
+            button.className = 'btn btn-danger';
+            button.setAttribute('disabled', true);
         } else {
             button.className = 'btn btn-primary';
             button.removeAttribute('disabled');
-            fieldsFilled = true;
         }
     }
 
-    function emailValidation(email) {
-        if (email.value != ''){
-            let regex =  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return regex.test(email);
+    function toggleErrorClass(element) {
+        if (element.value.trim() === '') {
+            element.classList.add('bg-danger-subtle');
         } else {
-            return true;
+            element.classList.remove('bg-danger-subtle');
         }
     }
 
-    function checkFields(fieldsFilled) {
-        if (!fieldsFilled) {
-            alert('Please, fill all fields to be able to send the form.');
-        } 
+    function emailValidation(emailValue) {
+        if (emailValue !== '') {
+            let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let result = regex.test(emailValue);
+            if (result == true) {
+                emailValid = true;
+                email.classList.remove('bg-danger-subtle');
+            } else {
+                emailValid = false;
+                email.classList.add('bg-danger-subtle');
+                alert("This isn't a valid email address.");
+            }
+            return result
+        } else {
+            return false;
+        }
     }
-
 });
-
