@@ -1,0 +1,3 @@
+It isn't safe because the client-side is easier to be attacked, the server doens't have control over the client 
+environment, and can be target of SQL injection, cross-site scripting (XSS), and other forms of attacks. Also, the browsers
+may handle in different ways with Javascript, resulting on inconsistent validation.
